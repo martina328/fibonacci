@@ -1,15 +1,7 @@
 export const fibonacciDp = (n: number): number => {
-    let cache = {};
-    return function fibonacciDp(n) {
-        if (n in cache) {
-            return cache[n];
-        } else {
-            if (n < 2) {
-                return n;
-            } else {
-                cache[n] = fibonacciDp(n-1) + fibonacciDp(n-2);
-                return cache[n];
-            }
-        }
-    }
+  const dp = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    dp.push(dp[i - 2] + dp[i - 1]);
+  }
+  return dp[n];
 };
